@@ -7,35 +7,11 @@
 let previousPrice = '';
 let previousUrl = '';
 
-// const observer = new MutationObserver(function () {
-//     const firstSpan = document.querySelector('[style^="--pricing"] span[aria-hidden]');
-//     const newPrice = firstSpan.textContent;
-
-//     const changeConditions = [
-//         newPrice !== previousPrice,
-//         // location.href !== previousUrl,
-//     ];
-
-//     if (changeConditions.some((condition) => !!condition)) {
-//         console.log(`URL changed to ${location.href}`);
-//         console.log('+++prevPrice, newPrice', previousPrice, newPrice);
-//         previousPrice = newPrice;
-//         previousUrl = location.href;
-//         replacePrices();
-//     }
-// });
-// const config = { subtree: true, childList: true };
-// observer.observe(document, config);
-
 function replacePrices() {
     const prices = [...document.querySelectorAll('[style^="--pricing"] [aria-hidden]')];
 
     const divs = prices.filter(el => el.nodeName === "DIV");
     const spans = prices.filter(el => el.nodeName === "SPAN");
-
-    /* const pricePerNight = parseInt(spans[0].textContent.match(/\d+/)[0]) / 3; */
-
-    /* divs[0].childNodes[1].textContent = '$' + pricePerNight; */
 
     for (let i = 0; i < divs.length; i++) {
         const childNodes = divs[i].childNodes;
